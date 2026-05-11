@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Secure Access — Iron Link Intel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --canvas:#080610;--surface:#110E1A;--surface-2:#1D1A24;
+  --violet:#D2BBFF;--gold:#E9C349;--border:#4A4455;--border-s:rgba(74,68,85,.4);
+  --tp:#F0EDF8;--tm:#9B94AC;--ts:#6B6478;
+  --vd:rgba(210,187,255,.08);--gd:rgba(233,195,73,.08);
+  --r-md:8px;--r-lg:12px;--r-xl:16px;
+}
+html,body{height:100%;background:var(--canvas);color:var(--tp);font-family:'Inter',sans-serif}
+
+/* ── Background grid ── */
+body::before{
+  content:'';position:fixed;inset:0;
+  background-image:linear-gradient(var(--border-s) 1px,transparent 1px),linear-gradient(90deg,var(--border-s) 1px,transparent 1px);
+  background-size:48px 48px;opacity:.35;pointer-events:none;z-index:0;
+}
+
+/* ── Ambient glow ── */
+.ambient{position:fixed;top:-20%;left:50%;transform:translateX(-50%);
+  width:700px;height:700px;border-radius:50%;
+  background:radial-gradient(circle,rgba(210,187,255,.06) 0%,transparent 70%);
+  pointer-events:none;z-index:0}
+
+/* ── Layout ── */
+.login-shell{
+  position:relative;z-index:1;
+  min-height:100vh;display:grid;
+  grid-template-columns:1fr 1fr;
+}
+
+/* ── Left panel — brand ── */
+.login-brand{
+  display:flex;flex-direction:column;justify-content:space-between;
+  padding:40px 48px;
+  background:linear-gradient(135deg,rgba(210,187,255,.03) 0%,transparent 60%);
+  border-right:1px solid var(--border-s);
+}
+.brand-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand-logo img{height:28px}
+.brand-logo-text{font-family:'Manrope',sans-serif;font-size:15px;font-weight:800;color:var(--tp);letter-spacing:-.02em}
+
+.brand-headline{margin-top:auto;margin-bottom:auto}
+.brand-eyebrow{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--violet);margin-bottom:20px}
+.brand-h1{font-family:'Manrope',sans-serif;font-size:clamp(36px,3.2vw,52px);font-weight:900;line-height:.92;letter-spacing:-.04em;text-transform:uppercase;color:var(--tp);margin-bottom:24px}
+.brand-h1 em{color:var(--violet);font-style:normal}
+.brand-sub{font-size:14px;line-height:1.65;color:var(--tm);max-width:340px}
+
+.brand-stats{display:flex;gap:32px;padding-top:24px;border-top:1px solid var(--border-s)}
+.bstat-val{font-family:'Manrope',sans-serif;font-size:22px;font-weight:800;color:var(--tp);letter-spacing:-.02em}
+.bstat-lbl{font-size:10px;color:var(--ts);margin-top:2px}
+
+/* ── Right panel — form ── */
+.login-form-wrap{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:40px 48px;
+}
+.login-box{width:100%;max-width:400px}
+
+.login-header{margin-bottom:36px;text-align:center}
+.login-badge{
+  display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--border-s);border-radius:100px;
+  padding:5px 14px;margin-bottom:20px;
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--tm);
+}
+.login-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse-g 2s ease-in-out infinite}
+@keyframes pulse-g{0%,100%{opacity:1}50%{opacity:.4}}
+.login-title{font-family:'Manrope',sans-serif;font-size:24px;font-weight:800;color:var(--tp);letter-spacing:-.02em;margin-bottom:8px}
+.login-sub{font-size:13px;color:var(--tm);line-height:1.6}
+
+/* ── Form fields ── */
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--tm);margin-bottom:7px}
+.form-input{
+  width:100%;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  border-radius:var(--r-md);
+  padding:13px 16px;
+  font-size:14px;font-family:'Inter',sans-serif;
+  color:var(--tp);
+  outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.form-input::placeholder{color:var(--ts)}
+.form-input:focus{border-color:rgba(210,187,255,.5);box-shadow:0 0 0 3px rgba(210,187,255,.08)}
+
+.form-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.form-forgot{font-size:12px;color:var(--tm);text-decoration:none;transition:color .2s}
+.form-forgot:hover{color:var(--violet)}
+
+/* ── Submit button ── */
+.btn-login{
+  width:100%;padding:14px;
+  background:var(--gold);color:#0D0B14;
+  font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;letter-spacing:.02em;
+  border:none;border-radius:var(--r-md);cursor:pointer;
+  transition:opacity .2s,transform .1s;
+}
+.btn-login:hover{opacity:.9;transform:translateY(-1px)}
+.btn-login:active{transform:translateY(0)}
+
+.form-divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--ts);font-size:11px}
+.form-divider::before,.form-divider::after{content:'';flex:1;height:1px;background:var(--border-s)}
+
+.btn-sso{
+  width:100%;padding:12px;
+  background:transparent;color:var(--tp);
+  font-family:'Inter',sans-serif;font-size:13px;font-weight:500;
+  border:1px solid var(--border);border-radius:var(--r-md);cursor:pointer;
+  transition:border-color .2s,background .2s;
+  display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.btn-sso:hover{border-color:rgba(210,187,255,.3);background:var(--vd)}
+
+/* ── Security notice ── */
+.login-security{
+  margin-top:28px;padding:14px;
+  background:var(--surface-2);border:1px solid var(--border-s);border-radius:var(--r-md);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.sec-icon{flex-shrink:0;margin-top:1px}
+.sec-text{font-size:11px;line-height:1.6;color:var(--ts)}
+.sec-text strong{color:var(--tm);font-weight:600}
+
+/* ── Footer ── */
+.login-foot{margin-top:32px;text-align:center;font-size:11px;color:var(--ts)}
+.login-foot a{color:var(--tm);text-decoration:none}
+.login-foot a:hover{color:var(--violet)}
+
+/* ── Responsive ── */
+@media(max-width:768px){
+  .login-shell{grid-template-columns:1fr}
+  .login-brand{display:none}
+  .login-form-wrap{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="login-shell">
+
+  <!-- Left: Brand panel -->
+  <div class="login-brand">
+    <a href="index.html" class="brand-logo">
+      <img src="IntelLogo.svg" alt="ILI">
+      <span class="brand-logo-text">Iron Link Intel</span>
+    </a>
+
+    <div class="brand-headline">
+      <div class="brand-eyebrow">Secure Access Terminal</div>
+      <h1 class="brand-h1">The Architecture<br>of <em>Certainty.</em></h1>
+      <p class="brand-sub">Authorized access only. All sessions are encrypted, logged, and audited in compliance with federal intelligence handling standards.</p>
+    </div>
+
+    <div class="brand-stats">
+      <div><div class="bstat-val">99.4%</div><div class="bstat-lbl">Identity Accuracy</div></div>
+      <div><div class="bstat-val">&lt;140ms</div><div class="bstat-lbl">Index Latency</div></div>
+      <div><div class="bstat-val">42B+</div><div class="bstat-lbl">Records Indexed</div></div>
+    </div>
+  </div>
+
+  <!-- Right: Form -->
+  <div class="login-form-wrap">
+    <div class="login-box">
+      <div class="login-header">
+        <div class="login-badge">
+          <span class="login-badge-dot"></span>
+          Secure Connection Active
+        </div>
+        <div class="login-title">Sign In to ILI</div>
+        <p class="login-sub">Enter your credentials to access the Intelligence Platform.</p>
+      </div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" id="email" type="email" placeholder="analyst@agency.gov" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-input" id="password" type="password" placeholder="••••••••••••" autocomplete="current-password">
+        </div>
+        <div class="form-row">
+          <label style="display:flex;align-items:center;gap:7px;font-size:12px;color:var(--tm);cursor:pointer">
+            <input type="checkbox" style="accent-color:var(--violet)"> Keep me signed in
+          </label>
+          <a href="#" class="form-forgot">Forgot password?</a>
+        </div>
+        <button class="btn-login" type="submit" id="loginBtn">Sign In →</button>
+      </form>
+
+      <div class="form-divider">or continue with</div>
+
+      <button class="btn-sso">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1" y="1" width="6" height="6" rx="1" fill="#4285F4"/><rect x="9" y="1" width="6" height="6" rx="1" fill="#34A853"/><rect x="1" y="9" width="6" height="6" rx="1" fill="#EA4335"/><rect x="9" y="9" width="6" height="6" rx="1" fill="#FBBC05"/></svg>
+        Continue with Google Workspace
+      </button>
+
+      <div class="login-security">
+        <span class="sec-icon">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="#6B6478" stroke-width="1.3"><path d="M7 1L13 4V7C13 10.3 10.3 13.3 7 14C3.7 13.3 1 10.3 1 7V4L7 1Z"/></svg>
+        </span>
+        <p class="sec-text"><strong>Authorized personnel only.</strong> Unauthorized access attempts are logged and reported. This system handles sensitive intelligence data subject to federal regulations.</p>
+      </div>
+
+      <div class="login-foot">
+        <a href="index.html">← Back to Iron Link Intel</a>
+        &nbsp;·&nbsp;
+        <a href="#">Privacy Policy</a>
+        &nbsp;·&nbsp;
+        <a href="contact.html">Contact Support</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function handleLogin(e) {
+  e.preventDefault();
+  var btn = document.getElementById('loginBtn');
+
+  btn.disabled = true;
+  btn.textContent = 'Authenticating...';
+  btn.style.opacity = '.7';
+
+  setTimeout(function() {
+    window.location.href = 'https://echo-control-opal.vercel.app';
+  }, 1200);
+}
+</script>
+<style>
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  20%      { transform: translateX(-6px); }
+  40%      { transform: translateX(6px); }
+  60%      { transform: translateX(-4px); }
+  80%      { transform: translateX(4px); }
+}
+</style>
+</body>
+</html>
