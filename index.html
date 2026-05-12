@@ -590,43 +590,75 @@ a{color:inherit;text-decoration:none}
 @media(max-width:800px){.testi-grid{grid-template-columns:1fr}.testi-card,.testi-card:nth-child(2),.testi-card:nth-child(3),.testi-card:first-child{border-radius:var(--r-xl)}}
 
 /* ════════════════════════════════════
-   S8, PRICING
+   S8, PRICING — 2 main + 3 add-on layout
 ════════════════════════════════════ */
 .pricing{padding:100px 0}
 .price-header{text-align:center;max-width:580px;margin:0 auto 56px}
 .price-header .d-lg{margin:16px 0 18px}
 .price-header p{color:var(--ts);font-size:15px;line-height:1.7}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
-.pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:32px 28px;position:relative;overflow:hidden;transition:transform .25s}
+
+/* Main packages — 2-column featured */
+.price-grid-main{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-bottom:88px}
+
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-xl);padding:36px 32px;position:relative;overflow:hidden;transition:transform .25s;display:flex;flex-direction:column}
 .pc:hover{transform:translateY(-3px)}
 .pc.apex{border-color:var(--gold);box-shadow:0 0 40px rgba(233,195,73,.07),inset 0 0 60px rgba(233,195,73,.025)}
 .pc.apex::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.pc-visual{height:72px;margin-bottom:24px;display:flex;align-items:center;justify-content:center}
+.pc-visual{height:64px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
 .geo-tri{width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:44px solid rgba(210,187,255,.1);filter:drop-shadow(0 0 5px rgba(210,187,255,.15))}
 .geo-dia{width:42px;height:42px;background:rgba(233,195,73,.08);border:1px solid rgba(233,195,73,.3);transform:rotate(45deg);box-shadow:0 0 18px rgba(233,195,73,.12)}
-.geo-hex{width:48px;height:55px;background:rgba(210,187,255,.05);border:1px solid rgba(210,187,255,.18);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%)}
 .pc-badge{margin-bottom:16px}
-.pc-name{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:var(--tp);margin-bottom:8px}
+.pc-name{font-family:'Manrope',sans-serif;font-size:26px;font-weight:800;color:var(--tp);margin-bottom:10px;letter-spacing:-.01em}
 .pc.apex .pc-name{color:var(--gold)}
-.pc-tagline{font-size:16px;color:var(--ts);line-height:1.5;margin-bottom:24px}
+.pc-tagline{font-size:15px;color:var(--ts);line-height:1.6;margin-bottom:24px}
 .pc-price{margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid var(--border-s)}
-.price-amt{font-family:'Manrope',sans-serif;font-size:38px;font-weight:800;letter-spacing:-.03em;color:var(--tp)}
-.price-amt .cur{font-size:20px;vertical-align:super;line-height:1}
-.price-amt .per{font-size:15px;color:var(--tm);font-weight:400}
-.price-amt.custom{font-size:24px;letter-spacing:-.02em}
-.pc-feats{list-style:none;margin-bottom:28px}
-.pc-feats li{display:flex;align-items:flex-start;gap:9px;padding:7px 0;font-size:16px;color:var(--ts);border-bottom:1px solid rgba(74,68,85,.18)}
+.price-amt{font-family:'Manrope',sans-serif;font-size:30px;font-weight:800;letter-spacing:-.03em;color:var(--tp);line-height:1.1}
+.price-amt .per{font-size:14px;color:var(--tm);font-weight:400}
+.price-amt.custom{font-size:26px;letter-spacing:-.02em}
+.pc-min{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-top:8px}
+.pc-feats{list-style:none;margin-bottom:28px;flex:1}
+.pc-feats li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14px;color:var(--ts);line-height:1.5;border-bottom:1px solid rgba(74,68,85,.18)}
 .pc-feats li:last-child{border:none}
-.fc{width:14px;height:14px;flex-shrink:0;margin-top:1px}
-.pc-btn{display:block;width:100%;padding:14px;border-radius:var(--r-sm);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;text-align:center;cursor:pointer;transition:opacity .2s,transform .2s;border:none}
+.pc-feats li.feat-heading{font-weight:700;color:var(--tp);font-size:13px;letter-spacing:.02em;text-transform:uppercase;padding-bottom:14px;margin-bottom:4px}
+.fc{width:14px;height:14px;flex-shrink:0;margin-top:3px}
+.pc-btn{display:block;width:100%;padding:15px;border-radius:var(--r-sm);font-family:'Manrope',sans-serif;font-size:13px;font-weight:700;text-align:center;cursor:pointer;transition:opacity .2s,transform .2s;border:none;text-decoration:none;box-sizing:border-box}
 .pc-btn:hover{opacity:.88;transform:translateY(-1px)}
 .pc-btn.v{background:var(--vd);color:var(--violet);border:1px solid rgba(210,187,255,.22)}
 .pc-btn.g{background:var(--gold);color:#0E0B15;box-shadow:0 0 18px rgba(233,195,73,.2)}
 .pc-btn.o{background:transparent;color:var(--ts);border:1px solid var(--border)}
 .pc-btn.o:hover{border-color:var(--violet);color:var(--violet)}
 
-@media(max-width:1024px){.price-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}}
+/* Add-ons & Training */
+.addon-header{text-align:center;max-width:520px;margin:0 auto 36px}
+.addon-header .d-md{margin-top:8px;color:var(--tp)}
+.addon-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.addon-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg);padding:28px 26px;position:relative;transition:border-color .25s,transform .25s;display:flex;flex-direction:column}
+.addon-card:hover{border-color:rgba(210,187,255,.3);transform:translateY(-2px)}
+.addon-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(210,187,255,.18),transparent)}
+.addon-badge{margin-bottom:14px}
+.addon-name{font-family:'Manrope',sans-serif;font-size:20px;font-weight:800;color:var(--tp);margin-bottom:6px;letter-spacing:-.01em;line-height:1.25}
+.addon-min{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--border-s)}
+.addon-feats{list-style:none}
+.addon-feats li{display:flex;align-items:flex-start;gap:10px;padding:8px 0;font-size:13px;color:var(--ts);line-height:1.55}
+.ac-dot{width:5px;height:5px;border-radius:50%;background:var(--violet);flex-shrink:0;margin-top:8px}
 
+/* Responsive pricing */
+@media(max-width:1024px){
+  .price-grid-main{gap:14px}
+  .pc{padding:30px 26px}
+  .pc-name{font-size:22px}
+  .addon-grid{gap:12px}
+  .addon-card{padding:24px 22px}
+}
+@media(max-width:768px){
+  .price-grid-main{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto;margin-bottom:56px;gap:16px}
+  .addon-grid{grid-template-columns:1fr;max-width:520px;margin-left:auto;margin-right:auto;gap:12px}
+  .pricing{padding:64px 0}
+  .pc{padding:26px 22px}
+  .addon-card{padding:22px 20px}
+  .pc-name{font-size:22px}
+  .addon-name{font-size:18px}
+}
 /* ════════════════════════════════════
    FOOTER
 ════════════════════════════════════ */
@@ -1016,6 +1048,182 @@ a{color:inherit;text-decoration:none}
   .d-lg{font-size:26px}
   .kpi-row{gap:6px}
 }
+
+/* ════════════════════════════════════
+   TABLET RANGE (768–1024px) — fill the gap
+════════════════════════════════════ */
+@media(max-width:1024px) and (min-width:768px){
+  /* Hero headline could clip at tablet width */
+  .hb-l1{font-size:clamp(48px,8vw,90px)}
+  .hb-l2{font-size:clamp(58px,10vw,120px)}
+  /* Personas bento needs to relax */
+  .personas-bento{grid-template-columns:1fr 1fr;grid-template-rows:auto;min-height:auto}
+  .persona-card:nth-child(1){grid-column:1/-1;grid-row:auto}
+  .pc-aerial-zone{flex:0 0 200px}
+  /* Excellence section grid stays 2-col but reduces gap */
+  .feat-nav-grid{gap:40px}
+  .feat-nav-title{font-size:28px}
+  /* Dashboard mockup needs height cap so it doesn't dominate */
+  .dash-mockup .m-body{height:auto;min-height:480px}
+  /* HIW row metric column too wide */
+  .hiw-row{grid-template-columns:90px 1fr auto;gap:0 32px}
+  .hiw-meta{min-width:120px}
+  /* Footer doesn't need 60px gap on tablet */
+  .footer-in{gap:40px}
+}
+
+/* ════════════════════════════════════
+   EXTRA-SMALL TUNING (≤480px)
+════════════════════════════════════ */
+@media(max-width:480px){
+  /* Nav can lose the wordmark on very small phones */
+  .logo-wordmark{display:none}
+  /* Hero stats can wrap to 2 columns */
+  .hero-lower .hero-stats{gap:14px}
+  .hero-lower .hero-stats > div{min-width:90px}
+  /* Dashboard nav width was 200 min, that's wide on a 393px screen */
+  .m-nav{display:none}
+  .m-sidebar{display:none}
+  .m-content{padding:14px}
+  /* Trust bridge content should stack */
+  .trust-content{flex-direction:column;gap:20px;padding:24px}
+  .trust-copy{text-align:center}
+  .trust-divider{width:60px;height:1px}
+  /* Excellence feature nav titles too big */
+  .feat-nav-title{font-size:22px}
+  .feat-nav-visual{min-height:200px}
+  /* DOW lockup */
+  .dow-logo{height:60px}
+  .dow-wordmark-title{font-size:18px}
+}
+
+/* ════════════════════════════════════
+   SAFARI iOS viewport fix
+════════════════════════════════════ */
+/* `100vh` includes Safari's URL bar, causing content jump. Use dvh where supported. */
+@supports (height: 100dvh){
+  .hero-scrub-inner{height:100dvh}
+  .hiw{height:100dvh}
+}
+
+/* ════════════════════════════════════
+   Prevent horizontal scroll on any breakpoint
+════════════════════════════════════ */
+body{overflow-x:hidden}
+.hero-scrub-outer,.hiw-scroll-outer,section{overflow-x:clip}
+
+/* ════════════════════════════════════
+   Mobile Nav Hamburger + Overlay
+════════════════════════════════════ */
+.nav-burger{
+  display:none;
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:var(--r-sm);
+  width:42px;height:42px;
+  cursor:pointer;
+  padding:0;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:5px;
+  transition:border-color .2s;
+}
+.nav-burger:hover{border-color:var(--violet)}
+.nav-burger span{
+  display:block;
+  width:18px;height:1.5px;
+  background:var(--tp);
+  border-radius:2px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),opacity .25s ease;
+  transform-origin:center;
+}
+.nav-burger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-burger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-burger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+.mobile-menu{
+  position:fixed;
+  inset:0;
+  z-index:250;
+  background:rgba(9,8,13,.97);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .3s ease;
+  padding-top:64px; /* clears the nav */
+  overflow-y:auto;
+}
+.mobile-menu.open{
+  opacity:1;
+  pointer-events:auto;
+}
+.mobile-menu-inner{
+  max-width:480px;
+  margin:0 auto;
+  padding:32px 24px 48px;
+  display:flex;
+  flex-direction:column;
+  gap:32px;
+  min-height:100%;
+}
+.mobile-menu-links{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  padding:0;
+  margin:0;
+}
+.mobile-menu-links li{
+  border-bottom:1px solid var(--border-s);
+}
+.mobile-menu-links a{
+  display:block;
+  padding:20px 4px;
+  font-family:'Manrope',sans-serif;
+  font-size:24px;
+  font-weight:700;
+  color:var(--tp);
+  letter-spacing:-.01em;
+  text-decoration:none;
+  transition:color .2s,transform .2s;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a:active{
+  color:var(--violet);
+  transform:translateX(4px);
+}
+.mobile-menu-cta{
+  margin-top:auto;
+  padding-top:24px;
+}
+/* Staggered entrance for links when menu opens */
+.mobile-menu-links li{
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .35s ease,transform .35s ease;
+}
+.mobile-menu.open .mobile-menu-links li{opacity:1;transform:translateY(0)}
+.mobile-menu.open .mobile-menu-links li:nth-child(1){transition-delay:.08s}
+.mobile-menu.open .mobile-menu-links li:nth-child(2){transition-delay:.14s}
+.mobile-menu.open .mobile-menu-links li:nth-child(3){transition-delay:.20s}
+.mobile-menu.open .mobile-menu-links li:nth-child(4){transition-delay:.26s}
+.mobile-menu.open .mobile-menu-links li:nth-child(5){transition-delay:.32s}
+/* Lock body scroll when menu open */
+body.menu-open{overflow:hidden}
+
+/* Show burger / hide desktop links below 900px */
+@media(max-width:900px){
+  .nav-burger{display:flex}
+  .nav-cta .btn:not(.nav-burger){padding:10px 16px;font-size:12px}
+}
+@media(max-width:480px){
+  /* On very small phones, hide the Sign In button to save space — it's in the menu */
+  .nav-cta > .btn-g{display:none}
+  .mobile-menu-links a{font-size:22px;padding:18px 4px}
+}
 </style>
 </head>
 <body>
@@ -1061,10 +1269,29 @@ a{color:inherit;text-decoration:none}
       </ul>
       <div class="nav-cta">
         <a href="login.html" class="btn btn-g">Sign In</a>
+        <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </div>
 </nav>
+
+<!-- Mobile menu overlay -->
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu-inner">
+    <ul class="mobile-menu-links">
+      <li><a href="#complexity" data-mm-link>Capabilities</a></li>
+      <li><a href="#pillars" data-mm-link>Platform</a></li>
+      <li><a href="#personas" data-mm-link>About Us</a></li>
+      <li><a href="#pricing" data-mm-link>Pricing</a></li>
+      <li><a href="https://calendly.com/emily-harshman/iron-link?month=2026-04" target="_blank" rel="noopener" data-mm-link style="color:var(--gold)">Book Demo</a></li>
+    </ul>
+    <div class="mobile-menu-cta">
+      <a href="login.html" class="btn btn-g" style="width:100%;justify-content:center">Sign In</a>
+    </div>
+  </div>
+</div>
 
 <!-- ══ TRUST BRIDGE ════════════════════════════════════════ -->
 
@@ -1700,57 +1927,110 @@ a{color:inherit;text-decoration:none}
 </section>
 
 <!-- ══ S8: PRICING ════════════════════════════════ -->
+<!-- ══ S8: PRICING — 2 main + 3 add-on ═══════════════ -->
 <section class="pricing" id="pricing">
   <div class="wrap">
     <div class="price-header fu">
       <span class="label">Pricing</span>
       <h2 class="d-lg">Investment in Certainty.</h2>
-      <p>Choose the intelligence tier that matches your operational requirements. Transparent. Scalable. No fluff.</p>
+      <p>Two intelligence tiers built for mission-critical operations. Add specialized capabilities and onboarding as needed.</p>
     </div>
-    <div class="price-grid">
+
+    <!-- Main Packages -->
+    <div class="price-grid-main">
+
+      <!-- BRONZE -->
       <div class="pc fu">
-        <div class="pc-name">Foundation</div>
-        <p class="pc-tagline">For independent analysts requiring methodical search capabilities and structured evidence workflows.</p>
-        <div class="pc-price"><div class="price-amt"><span class="cur">$</span>00,000<span class="per"> / mo</span></div></div>
+        <div class="pc-visual"><div class="geo-tri"></div></div>
+        <div class="pc-name">Bronze Package</div>
+        <p class="pc-tagline">Core intelligence platform for teams establishing modern OSINT and threat-monitoring capabilities.</p>
+        <div class="pc-price">
+          <div class="price-amt custom">Inquire<span class="per"> for pricing</span></div>
+          <div class="pc-min">Minimum 10 users</div>
+        </div>
         <ul class="pc-feats">
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>OSINT search, 50+ sources</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Structured evidence reporting</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Identity Finder (basic)</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>20 active investigations</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#625B72" stroke-width="1"/><path d="M5 5L9 9M9 5L5 9" stroke="#625B72" stroke-width="1.1" stroke-linecap="round"/></svg><span style="color:var(--tm)">Neural threat detection</span></li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#625B72" stroke-width="1"/><path d="M5 5L9 9M9 5L5 9" stroke="#625B72" stroke-width="1.1" stroke-linecap="round"/></svg><span style="color:var(--tm)">Dark web indexing</span></li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>24×7 patent-pending AI threat automation &amp; notification</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>5 threat levels from 100,000+ OSINT data points, including the Dark Web</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Multilingual translation from 116 languages</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Automated summary of every post</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Advanced reporting &amp; custom dashboards</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Case management (request integrations)</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Custom notifications &amp; event triggers</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Image, video &amp; text recognition for veiled threats</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Video and image transcription</li>
         </ul>
-        <button class="pc-btn v">Book a Call →</button>
+        <a href="https://calendly.com/emily-harshman/iron-link?month=2026-04" target="_blank" rel="noopener" class="pc-btn v">Inquire for Pricing →</a>
       </div>
+
+      <!-- PLATINUM (Featured) -->
       <div class="pc apex fu d1">
-        <div class="pc-badge"><span class="pill pill-g"><span class="dot-live"></span>Industry Standard</span></div>
-        <div class="pc-name">Apex Grade</div>
-        <p class="pc-tagline">Full automation, patent-pending threat detection, priority indexing. The platform elite analysts rely on.</p>
-        <div class="pc-price"><div class="price-amt"><span class="cur">$</span>00,000<span class="per"> / mo</span></div></div>
+        <div class="pc-badge"><span class="pill pill-g"><span class="dot-live"></span>Most Comprehensive</span></div>
+        <div class="pc-visual"><div class="geo-dia"></div></div>
+        <div class="pc-name">Platinum Package</div>
+        <p class="pc-tagline">Full-spectrum intelligence with biometric correlation, criminal records access, and location-based monitoring.</p>
+        <div class="pc-price">
+          <div class="price-amt custom">Inquire<span class="per"> for pricing</span></div>
+          <div class="pc-min">Minimum 10 users</div>
+        </div>
         <ul class="pc-feats">
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>OSINT search, 200+ sources</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Patent-pending neural detection</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Real-time dark web indexing</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Biometric identity correlation</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Multimodal intelligence synthesis</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Unlimited active investigations</li>
+          <li class="feat-heading"><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Everything in Bronze, plus:</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Analytics connection to Identity Finder</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Identity Finder (legal authority required)</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Facial recognition</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Customized monitoring of social media accounts for flagged individuals</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Posted location recognition</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Criminal history access (legal authority required)</li>
+          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#E9C349" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#E9C349" stroke-width="1.2" stroke-linecap="round"/></svg>Monitored locations</li>
         </ul>
-        <button class="pc-btn g">Start Apex Trial →</button>
+        <a href="https://calendly.com/emily-harshman/iron-link?month=2026-04" target="_blank" rel="noopener" class="pc-btn g">Inquire for Pricing →</a>
       </div>
-      <div class="pc fu d2">
-        <div class="pc-name">Enterprise</div>
-        <p class="pc-tagline">Custom cross-platform identity correlation and dedicated OPSEC support for mission-critical intelligence units.</p>
-        <div class="pc-price"><div class="price-amt custom">Custom<span class="per"> pricing</span></div></div>
-        <ul class="pc-feats">
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Everything in Apex Grade</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Cross-platform identity API</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Dedicated OPSEC support team</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Air-gapped deployment option</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>SLA + priority incident response</li>
-          <li><svg class="fc" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="6" stroke="#D2BBFF" stroke-width="1"/><path d="M4.5 7L6 8.5L9.5 5.5" stroke="#D2BBFF" stroke-width="1.2" stroke-linecap="round"/></svg>Custom data source integration</li>
+    </div>
+
+    <!-- Add-Ons + Training -->
+    <div class="addon-header fu">
+      <span class="label" style="color:var(--violet)">Add-Ons &amp; Training</span>
+      <h3 class="d-md">Extend Your Capability.</h3>
+    </div>
+    <div class="addon-grid">
+
+      <!-- Identity Finder Add-On -->
+      <div class="addon-card fu">
+        <div class="addon-badge"><span class="pill pill-v">Add-On</span></div>
+        <div class="addon-name">Identity Finder</div>
+        <div class="addon-min">Minimum 10 users</div>
+        <ul class="addon-feats">
+          <li><span class="ac-dot"></span>Connection to Analytics</li>
+          <li><span class="ac-dot"></span>Customized monitoring of social media accounts for flagged individuals</li>
+          <li><span class="ac-dot"></span>Posted location recognition</li>
+          <li><span class="ac-dot"></span>Criminal history access</li>
+          <li><span class="ac-dot"></span>Threat assessment report</li>
         </ul>
-        <button class="pc-btn o">Contact the Team →</button>
       </div>
+
+      <!-- Facial Recognition Add-On -->
+      <div class="addon-card fu d1">
+        <div class="addon-badge"><span class="pill pill-v">Add-On</span></div>
+        <div class="addon-name">Facial Recognition</div>
+        <div class="addon-min">Minimum 10 users</div>
+        <ul class="addon-feats">
+          <li><span class="ac-dot"></span>Facial recognition scanning from posts and social media</li>
+          <li><span class="ac-dot"></span>99% accuracy on posted pictures</li>
+          <li><span class="ac-dot"></span>Analytics connection for deep social metrics, behavioral patterns, and real-time red-flag alerts</li>
+        </ul>
+      </div>
+
+      <!-- Training -->
+      <div class="addon-card fu d2">
+        <div class="addon-badge"><span class="pill pill-g">One-Time</span></div>
+        <div class="addon-name">ACI Iron Link Intel Training</div>
+        <div class="addon-min">Onboarding Session</div>
+        <ul class="addon-feats">
+          <li><span class="ac-dot"></span>1-day session (remote)</li>
+          <li><span class="ac-dot"></span>Platform walkthrough and operational best practices</li>
+          <li><span class="ac-dot"></span>Q&amp;A with the intelligence engineering team</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2225,6 +2505,48 @@ if(fv){ fv.playbackRate = 0.5; fv.play().catch(()=>{}); }
     else if(e.boundingClientRect.top > 0) stopDash();
   }, {threshold:0.25});
   dashIO2.observe(mockup);
+})();
+
+// ── Mobile nav hamburger ──────────────────────────────
+(function(){
+  var burger = document.getElementById('navBurger');
+  var menu   = document.getElementById('mobileMenu');
+  if(!burger || !menu) return;
+
+  function open(){
+    burger.classList.add('open');
+    burger.setAttribute('aria-expanded','true');
+    menu.classList.add('open');
+    menu.setAttribute('aria-hidden','false');
+    document.body.classList.add('menu-open');
+  }
+  function close(){
+    burger.classList.remove('open');
+    burger.setAttribute('aria-expanded','false');
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden','true');
+    document.body.classList.remove('menu-open');
+  }
+  function toggle(){
+    if(menu.classList.contains('open')) close(); else open();
+  }
+
+  burger.addEventListener('click', toggle);
+
+  // Close when a menu link is clicked
+  menu.querySelectorAll('[data-mm-link]').forEach(function(a){
+    a.addEventListener('click', close);
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && menu.classList.contains('open')) close();
+  });
+
+  // Close if window resized back to desktop
+  window.addEventListener('resize', function(){
+    if(window.innerWidth > 900 && menu.classList.contains('open')) close();
+  });
 })();
 
 </script>
