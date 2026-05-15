@@ -1333,6 +1333,35 @@ html, body, html.hentry, body.entry-content {
   .ev-step { font-size: 8.5px !important; padding: 3px 8px !important; }
   .ev-arrow { font-size: 10px !important; }
 }
+
+/* Personas — same grid-column-2 bug as the Bento */
+@media (max-width: 900px) {
+  .personas-bento {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto !important;
+  }
+  .persona-card:nth-child(1),
+  .persona-card:nth-child(2),
+  .persona-card:nth-child(3) {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Description block sits in a flex wrapper with inline justify-content:flex-end.
+     Override so it left-aligns and uses full width on mobile. */
+  .personas-header > div:last-child {
+    justify-content: flex-start !important;
+  }
+  .personas-desc {
+    max-width: 100% !important;
+    text-align: left !important;
+  }
+  /* Slightly tighter card padding on small screens */
+  .pc-body { padding: 22px 22px !important; }
+  .persona-role { font-size: 18px; }
+}
 </style>
 </head>
 <body>
