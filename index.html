@@ -1232,6 +1232,107 @@ html, body, html.hentry, body.entry-content {
 .hero-scrub-outer, .hiw-scroll-outer {
   overflow: visible !important;
 }
+
+/* ════════════════════════════════════════════════════════════
+   Mobile fixes: Three Steps to Certainty + Three Pillars only.
+   DO NOT touch the hero scrub — different system.
+════════════════════════════════════════════════════════════ */
+
+/* Force bento to single column at every mobile width — fixes
+   .bento-cell-spd still having grid-column:2 from desktop. */
+@media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .bento-cell-sec,
+  .bento-cell-spd,
+  .bento-cell-ev {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  /* ── Three Steps to Certainty ── */
+  .hiw-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 26px 0;
+  }
+  .hiw-rn {
+    font-size: 30px !important;
+    padding-left: 0 !important;
+    color: var(--gold) !important;
+    opacity: .55;
+  }
+  .hiw-rt {
+    color: var(--tp) !important;
+    font-size: 20px;
+  }
+  .hiw-rd {
+    max-height: none !important;
+    opacity: 1 !important;
+    margin-top: 6px !important;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .hiw-rbar-wrap { display: none !important; }
+  .hiw-meta {
+    display: flex !important;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+    align-items: flex-start;
+    min-width: 0;
+    padding-top: 12px;
+    margin-top: 4px;
+    border-top: 1px solid var(--border-s);
+  }
+  .hiw-mi {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+  }
+  .hiw-mv {
+    font-size: 16px !important;
+    color: var(--tp) !important;
+  }
+  .hiw-mk {
+    font-size: 9px;
+    margin-top: 0 !important;
+    color: var(--tm) !important;
+  }
+
+  /* ── Built on Three Pillars (Bento) ── */
+  .bento-cell-sec,
+  .bento-cell-ev,
+  .bento-cell-spd,
+  .bento-cell.bento-on {
+    transform: none !important;
+  }
+  .bento-grid { gap: 12px; }
+  .bento-cell-spd {
+    min-height: auto !important;
+    padding: 36px 24px !important;
+  }
+  .bento-cell-spd .bento-content > p {
+    font-size: 14px !important;
+    max-width: 280px !important;
+  }
+  .bento-big-num {
+    font-size: clamp(64px, 15vw, 92px) !important;
+    margin: 6px 0 0 !important;
+  }
+  .bento-big-unit {
+    font-size: 12px !important;
+    margin-bottom: 14px !important;
+  }
+  .ev-chain { gap: 6px !important; margin-top: 16px !important; }
+  .ev-step { font-size: 8.5px !important; padding: 3px 8px !important; }
+  .ev-arrow { font-size: 10px !important; }
+}
 </style>
 </head>
 <body>
