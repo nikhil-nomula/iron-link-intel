@@ -1254,56 +1254,83 @@ html, body, html.hentry, body.entry-content {
 
 @media (max-width: 767px) {
 
+  /* Release the sticky container on mobile so rows can flow naturally */
+.hiw-scroll-outer {
+  height: auto !important;
+}
+.hiw {
+  position: relative !important;
+  height: auto !important;
+  min-height: 0 !important;
+  padding: 60px 0 !important;
+  overflow: visible !important;
+  display: block !important;
+}
+.hiw-hint,
+.hiw-scroll-bar {
+  display: none !important;
+}
+
   /* ── Three Steps to Certainty ── */
   .hiw-row {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 26px 0;
+    gap: 4px;
+    padding: 32px 0;
   }
   .hiw-rn {
-    font-size: 30px !important;
+    font-size: 13px !important;
+    font-weight: 800 !important;
+    letter-spacing: .18em !important;
     padding-left: 0 !important;
     color: var(--gold) !important;
-    opacity: .55;
+    opacity: .75;
+    line-height: 1;
+    margin-bottom: 2px;
   }
   .hiw-rt {
     color: var(--tp) !important;
-    font-size: 20px;
+    font-size: 26px !important;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.15;
   }
   .hiw-rd {
     max-height: none !important;
     opacity: 1 !important;
-    margin-top: 6px !important;
+    margin-top: 10px !important;
     font-size: 15px;
     line-height: 1.6;
+    color: var(--ts);
   }
   .hiw-rbar-wrap { display: none !important; }
-  .hiw-meta {
-    display: flex !important;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 12px 20px;
-    align-items: flex-start;
-    min-width: 0;
-    padding-top: 12px;
-    margin-top: 4px;
-    border-top: 1px solid var(--border-s);
-  }
-  .hiw-mi {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1px;
-  }
-  .hiw-mv {
-    font-size: 16px !important;
-    color: var(--tp) !important;
-  }
-  .hiw-mk {
-    font-size: 9px;
-    margin-top: 0 !important;
-    color: var(--tm) !important;
-  }
+ .hiw-meta {
+  display: flex !important;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  align-items: flex-start;
+  min-width: 0;
+  padding-top: 16px;
+  margin-top: 8px;
+  border-top: 1px solid var(--border-s);
+}
+.hiw-mi {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1px;
+}
+.hiw-mv {
+  font-size: 16px !important;
+  color: var(--tp) !important;
+  font-weight: 800;
+}
+.hiw-mk {
+  font-size: 9px;
+  letter-spacing: .12em !important;
+  margin-top: 2px !important;
+  color: var(--tm) !important;
+}
 
   /* ── Built on Three Pillars (Bento) ── */
   .bento-cell-sec,
