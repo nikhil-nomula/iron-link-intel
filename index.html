@@ -1389,9 +1389,87 @@ html, body, html.hentry, body.entry-content {
   .pc-body { padding: 22px 22px !important; }
   .persona-role { font-size: 18px; }
 }
+
+/* ── ACI parent-brand strip ─────────────────────────────────
+   Subtle utility bar matching the dark glassmorphism of the site.
+   Sits above the fixed nav. */
+.aci-strip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 310;
+  height: 30px;
+  background: rgba(13, 10, 20, .72);
+  border-bottom: 1px solid rgba(74, 68, 85, .35);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  font-family: 'Source Sans 3', sans-serif;
+}
+.aci-strip-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.aci-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: var(--ts);
+  text-decoration: none;
+  transition: color .2s;
+}
+.aci-back:hover { color: var(--violet); }
+.aci-back svg { opacity: .55; transition: transform .2s, opacity .2s; }
+.aci-back:hover svg { transform: translateX(-2px); opacity: 1; }
+.aci-tagline {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--tm);
+}
+.aci-tagline strong {
+  color: var(--gold);
+  font-weight: 700;
+  margin-left: 6px;
+  letter-spacing: .12em;
+}
+
+/* Push nav and cinematic intro down by the strip height */
+.nav { top: 30px !important; }
+#cinematic-intro { top: 30px !important; }
+
+/* Mobile: tagline drops, padding tightens */
+@media (max-width: 600px) {
+  .aci-strip-inner { padding: 0 16px; }
+  .aci-tagline { display: none; }
+  .aci-back span { font-size: 10.5px; }
+}
 </style>
 </head>
 <body>
+
+  <!-- ── ACI parent-brand strip ────────────────────────────── -->
+<div class="aci-strip">
+  <div class="aci-strip-inner">
+    <a href="https://agilityconsultinginternational.com/" class="aci-back">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span>Agility Consulting International</span>
+    </a>
+    <span class="aci-tagline">A product of <strong>ACI</strong></span>
+  </div>
+</div>
 
 <!-- ══ CINEMATIC INTRO ════════════════════════════════ -->
 <div id="cinematic-intro">
